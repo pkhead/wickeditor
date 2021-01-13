@@ -1,11 +1,127 @@
 ### Documentation
 
-later
+### Namespace functions
+*void* pkplat.setLevel(*Wick.Clip*/*Wick.Frame* clip)
+- Sets the level data to the rectangles contained within *clip*.
+
+*void* pkplat.addActor(*Wick.Clip* actor)
+- Adds the actor into the world for collision detection
+
+*void* pkplat.removeActor(*Wick.Clip* clip)
+- Removes the actor from the world
+
+### pkplat.Controller class
+new pkplat.Controller(*Wick.Clip* clip)
+- Creates a new controller assigned to *clip*.
+
+*Wick.Clip* clip
+- The clip the Controller was assigned to
+
+*void* addEventListener(*String* evName, *Function* f)
+*void* removeEventListener(*String* evName, *Function* f)
+*void* remove()
+*void* update()
+
+### pkplat.SpecialPlatformController class
+new pkplat.SpecialPlatformController(*Wick.Clip* clip)
+
+*Boolean* collidable
+*Event* actortouched
+
+**Inherited from pkplat.Controller:**
+*Wick.Clip* clip
+- The clip the Controller was assigned to
+
+*void* addEventListener(*String* evName, *Function* f)
+*void* removeEventListener(*String* evName, *Function* f)
+*void* remove()
+*void* update()
+
+### pkplat.MovingPlatformController class
+new pkplat.MovingPlatformController(*Wick.Clip* clip)
+*Number* dx
+*Number* dy
+*void* move(*Number* dx, *Number* dy)
+*void* goTo(*Number* x, *Number* y)
+
+**Inherited from pkplat.SpecialPlatformController:**
+*Boolean* collidable
+*Event* actortouched
+
+**Inherited from pkplat.Controller:**
+*Wick.Clip* clip
+- The clip the Controller was assigned to
+
+*void* addEventListener(*String* evName, *Function* f)
+*void* removeEventListener(*String* evName, *Function* f)
+*void* remove()
+*void* update()
+
+### pkplat.ActorController class
+new pkplat.ActorController(*Wick.Clip* clip)
+*Number* friction
+*Number* speed
+*Number* jumpPower
+*Number* moveDir
+*Boolean* jumping
+*Boolean* noAccel
+*Boolean* ground
+
+*Event* blocktouched
+*Event* actortouched
+*Event* jumped
+
+*void* update()
+
+**Inherited from pkplat.Controller:**
+*Wick.Clip* clip
+- The clip the Controller was assigned to
+
+*void* addEventListener(*String* evName, *Function* f)
+*void* removeEventListener(*String* evName, *Function* f)
+*void* remove()
+
+### pkplat.PlayerController class
+new pkplat.PlayerController(*Wick.Clip* clip)
+
+*Boolean* wallJumping
+*String* rightKey
+*String* leftKey
+*String* upKey
+*String* downKey
+
+*void* update()
+
+**Inherited from pkplat.ActorController:**
+*Number* friction
+- Defaults to 0.8
+*Number* speed
+- Defaults to 1
+*Number* jumpPower
+- Defaults to 10
+*Number* moveDir
+*Boolean* jumping
+*Boolean* noAccel
+*Boolean* ground
+
+*Event* blocktouched
+*Event* actortouched
+*Event* jumped
+
+**Inherited from pkplat.Controller:**
+*Wick.Clip* clip
+- The clip the Controller was assigned to
+
+*void* addEventListener(*String* evName, *Function* f)
+*void* removeEventListener(*String* evName, *Function* f)
+*void* remove()
+
+### pkplat.ActorController
 
 ### Tutorial
 You need to import the pkhead_plat frame in your project. Make sure that it runs first. To do that, put that on the first frame and on the highest layer.
 
-How to make a level
+#### How to make a level
 You can start by drawing rectangles to make level blocks. When you are finished, write this code down somewhere:
 
 ```
@@ -14,7 +130,7 @@ pkplat.setLevel([your level object]);
 
 `[your level object]` can be a clip or a frame. Now, the platformer engine will register the rectangles inside that object as level data.
 
-How to make a player
+#### How to make a player
 To create a player, first you need to make a clip. Then put this code in the default script:
 
 ```
@@ -32,7 +148,7 @@ this.controller.update();
 
 This will update the controller and allow the player to be moved.
 
-How to make NPCs
+#### How to make NPCs
 Make a clip, then put this in the default script:
 
 ```
@@ -84,7 +200,7 @@ This will add an event listener that will call the function everytime the NPC to
 
 IMPORTANT: The `this` value is not the actor in event functions. It is the actor’s controller. `this.clip` is a reference to the actor that is being controlled.
 
-How to make moving platforms
+#### How to make moving platforms
 Moving platforms are actors, like player or NPCs. To make one, first make a clip. Then put this in the default script:
 
 ```
@@ -124,7 +240,7 @@ this.controller.move(this.moveDir, 0);
 
 This will create a new property in the actor named “moveDir,” which contains the speed and direction. When it touches a block, it will flip that direction.
 
-How to make a bouncy block
+#### How to make a bouncy block
 To do this, you will use a SpecialPlatformController. Put this in the default script of your desired actor:
 
 ```
@@ -138,7 +254,7 @@ this.controller.addEventListener("actortouched", function(side, actor) {
 });
 ```
 
-How to make a push field
+#### How to make a push field
 By push field, I mean a thing that pushes you up when you are inside it. Make a SpecialPlatformController, and put this code:
 
 ```
@@ -151,7 +267,7 @@ this.controller.addEventListener("actortouched", function(side, actor) {
 
 This will make it so players can go inside the platform. It will also make it so players that are touching the platform will be gravitated upwards.
 
-Removing actors
+#### Removing actors
 If you want to remove an actor, you need to remove the clip along with its controller.
 
 ```
@@ -168,4 +284,4 @@ controller.clip.remove();
 
 it will not work. You need to swap the two lines.
 
-If there is something wrong with this tutorial please tell me
+**If there is something wrong with this tutorial please tell me**
