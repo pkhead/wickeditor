@@ -14,12 +14,17 @@
 new pkplat.Controller(*Wick.Clip* clip)
 - Creates a new controller assigned to *clip*.
 
+
 *Wick.Clip* clip
 - The clip the Controller was assigned to
 
+
 *void* addEventListener(*String* evName, *Function* f)
+
 *void* removeEventListener(*String* evName, *Function* f)
+
 *void* remove()
+
 *void* update()
 
 ### pkplat.SpecialPlatformController class
@@ -32,44 +37,72 @@ new pkplat.SpecialPlatformController(*Wick.Clip* clip)
 *Wick.Clip* clip
 - The clip the Controller was assigned to
 
+
 *void* addEventListener(*String* evName, *Function* f)
+
 *void* removeEventListener(*String* evName, *Function* f)
+
 *void* remove()
+
 *void* update()
 
 ### pkplat.MovingPlatformController class
 new pkplat.MovingPlatformController(*Wick.Clip* clip)
+
+
 *Number* dx
+
 *Number* dy
+
+
 *void* move(*Number* dx, *Number* dy)
+
 *void* goTo(*Number* x, *Number* y)
 
 **Inherited from pkplat.SpecialPlatformController:**
+
 *Boolean* collidable
+
 *Event* actortouched
 
 **Inherited from pkplat.Controller:**
 *Wick.Clip* clip
 - The clip the Controller was assigned to
 
+
 *void* addEventListener(*String* evName, *Function* f)
+
 *void* removeEventListener(*String* evName, *Function* f)
+
 *void* remove()
+
 *void* update()
 
 ### pkplat.ActorController class
 new pkplat.ActorController(*Wick.Clip* clip)
+
+
 *Number* friction
+
 *Number* speed
+
 *Number* jumpPower
+
 *Number* moveDir
+
 *Boolean* jumping
+
 *Boolean* noAccel
+
 *Boolean* ground
 
+
 *Event* blocktouched
+
 *Event* actortouched
+
 *Event* jumped
+
 
 *void* update()
 
@@ -77,46 +110,67 @@ new pkplat.ActorController(*Wick.Clip* clip)
 *Wick.Clip* clip
 - The clip the Controller was assigned to
 
+
 *void* addEventListener(*String* evName, *Function* f)
+
 *void* removeEventListener(*String* evName, *Function* f)
+
 *void* remove()
 
 ### pkplat.PlayerController class
 new pkplat.PlayerController(*Wick.Clip* clip)
 
+
 *Boolean* wallJumping
+
 *String* rightKey
+
 *String* leftKey
+
 *String* upKey
+
 *String* downKey
+
 
 *void* update()
 
 **Inherited from pkplat.ActorController:**
+
 *Number* friction
 - Defaults to 0.8
+
 *Number* speed
 - Defaults to 1
+
 *Number* jumpPower
 - Defaults to 10
+
 *Number* moveDir
+
 *Boolean* jumping
+
 *Boolean* noAccel
+
 *Boolean* ground
 
+
 *Event* blocktouched
+
 *Event* actortouched
+
 *Event* jumped
 
 **Inherited from pkplat.Controller:**
+
 *Wick.Clip* clip
 - The clip the Controller was assigned to
 
-*void* addEventListener(*String* evName, *Function* f)
-*void* removeEventListener(*String* evName, *Function* f)
-*void* remove()
 
-### pkplat.ActorController
+*void* addEventListener(*String* evName, *Function* f)
+
+*void* removeEventListener(*String* evName, *Function* f)
+
+*void* remove()
 
 ### Tutorial
 You need to import the pkhead_plat frame in your project. Make sure that it runs first. To do that, put that on the first frame and on the highest layer.
